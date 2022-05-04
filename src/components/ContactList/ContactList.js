@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFetchContactsQuery } from '../../redux/slice';
+import PropTypes from 'prop-types';
 import ContactItem from '../ContactItem';
 import s from './ContactList.module.css';
 
@@ -30,5 +31,9 @@ function ContactList({ filter }) {
     </>
   );
 }
+
+ContactList.propTypes = {
+  filter: PropTypes.string,
+};
 
 export default ContactList;

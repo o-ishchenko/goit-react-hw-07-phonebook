@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDeleteContactMutation } from '../../redux/slice';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import s from './ContactItem.module.css';
 
 function ContactItem({ id, name, number }) {
@@ -9,7 +10,13 @@ function ContactItem({ id, name, number }) {
     <div className={s.item}>
       <h3>{name}</h3>
       <p>{number}</p>
-      <button onClick={() => deleteContact(id)} disabled={isDeleting}>
+      <button
+        onClick={() => {
+          deleteContact(id);
+          toast.info('Your contact has been deleted');
+        }}
+        disabled={isDeleting}
+      >
         {isDeleting ? 'Deleting' : 'Delete'}
       </button>
     </div>

@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import s from './Form.module.css';
 import {
   useFetchContactsQuery,
   useCreateContactMutation,
 } from '../../redux/slice';
+import { nanoid } from 'nanoid';
+import { toast } from 'react-toastify';
+import s from './Form.module.css';
 
 function Form() {
   const [name, setName] = useState('');
@@ -31,11 +32,12 @@ function Form() {
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      alert(`${name} is already in contacts`);
+      toast.info(`${name} is already in contacts`);
       return;
     }
     createContact(data);
     reset();
+    toast.success('New contact added!');
   };
 
   const reset = () => {

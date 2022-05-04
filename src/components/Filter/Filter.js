@@ -1,6 +1,6 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import s from './Filter.module.css';
 
 let filterId = nanoid();
